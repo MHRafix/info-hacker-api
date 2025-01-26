@@ -6,12 +6,14 @@ import {
   Get,
   Param,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ChatService } from './chat.service';
 import { CreateChatDto } from './dto/create-chat.dto';
+import { UpdateChatDto } from './dto/update-chat.dto';
 
 @ApiTags('Chat Module')
 @Controller('chat')
@@ -40,6 +42,12 @@ export class ChatController {
     }
   }
 
+  @ApiOperation({ description: 'Update chat' })
+  @Put(':_id')
+  update(@Param('_id') _id: string, @Body() updateChatDto: UpdateChatDto) {
+    return this.chatService.update(_id, updateChatDto);
+  }
+
   @ApiOperation({ description: 'Remove specific chat' })
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
@@ -56,9 +64,4 @@ export class ChatController {
 //  @Get(':_id')
 //   findOne(@Param('_id') _id: string) {
 //     return this.chatService.findOne(_id);
-//   }
-
-//   @Patch(':_id')
-//   update(@Param('_id') _id: string, @Body() updateChatDto: UpdateChatDto) {
-//     return this.chatService.update(_id, updateChatDto);
 //   }
