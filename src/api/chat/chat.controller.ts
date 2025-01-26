@@ -22,9 +22,9 @@ export class ChatController {
     return this.chatService.create(payload);
   }
 
-  @Get('/get-all-chats')
-  findAll() {
-    return this.chatService.findAll();
+  @Get('/get-all-chats/:userId')
+  findAll(@Param('userId') userId: string) {
+    return this.chatService.findAll(userId);
   }
 
   @Get(':_id')

@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsMongoId, IsNotEmpty } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsArray,
+  IsMongoId,
+  IsNotEmpty,
+  ValidateNested,
+} from 'class-validator';
 
 export class ChatMessagesDto {
   @ApiProperty({ required: true })
@@ -17,7 +23,13 @@ export class CreateChatDto {
   @IsMongoId()
   user: string;
 
-  @ApiProperty({ required: true })
+  @ApiProperty({
+    required: true,
+    type: [ChatMessagesDto], // explicitly define the type of array items
+  })
   @IsNotEmpty()
-  ChatMessages: ChatMessagesDto;
+  @IsArray()
+  @ValidateNested({ each: true }) // validate each item in the array
+  @Type(() => ChatMessagesDto) // validation type
+  chatMessages: ChatMessagesDto[];
 }

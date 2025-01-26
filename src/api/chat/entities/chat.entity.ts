@@ -18,7 +18,7 @@ export class Chat {
   user: string;
 
   @Prop({ required: true })
-  ChatMessages: ChatMessages;
+  chatMessages: ChatMessages;
 }
 
 export const ChatSchema = SchemaFactory.createForClass(Chat);
