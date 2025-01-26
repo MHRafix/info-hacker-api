@@ -3,6 +3,7 @@ import {
   Controller,
   ForbiddenException,
   Get,
+  Param,
   Post,
   UnauthorizedException,
   UseGuards,
@@ -35,6 +36,20 @@ export class UserController {
       return this.userService.login(payload);
     } catch (error) {
       return new UnauthorizedException('Failed to login');
+    }
+  }
+
+  @ApiBearerAuth()
+  @ApiOperation({ description: 'Get all users' })
+  @UseGuards(AuthGuard())
+  @Get('/user/:_id')
+  findOne(@Param('_id') _id: string) {
+    try {
+      return this.userService.findOneUserById(_id);
+    } catch (error) {
+      return new ForbiddenException({
+        message: 'Failed to get user',
+      });
     }
   }
 

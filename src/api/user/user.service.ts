@@ -77,6 +77,21 @@ export class UserService {
 
   /**
    * find all users
+   * _id: string
+   * @returns
+   */
+  async findOneUserById(_id: string) {
+    const user = await this.userModel.findOne({ _id });
+
+    if (!user) {
+      return new UnauthorizedException();
+    }
+
+    return user;
+  }
+
+  /**
+   * find all users
    * @returns
    */
   findAll() {
