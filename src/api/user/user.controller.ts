@@ -42,7 +42,7 @@ export class UserController {
   @ApiBearerAuth()
   @ApiOperation({ description: 'Get all users' })
   @UseGuards(AuthGuard())
-  @Get('/user/:_id')
+  @Get(':_id')
   findOne(@Param('_id') _id: string) {
     try {
       return this.userService.findOneUserById(_id);
