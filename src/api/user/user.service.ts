@@ -81,7 +81,10 @@ export class UserService {
    * @returns
    */
   async findOneUserById(_id: string) {
-    const user = await this.userModel.findOne({ _id });
+    const user = await this.userModel.findOne(
+      { _id },
+      '-__v -password -createdAt -updatedAt',
+    );
 
     if (!user) {
       return new UnauthorizedException();
@@ -95,6 +98,6 @@ export class UserService {
    * @returns
    */
   findAll() {
-    return this.userModel.find({});
+    return this.userModel.find({}, '-__v -password -createdAt -updatedAt');
   }
 }

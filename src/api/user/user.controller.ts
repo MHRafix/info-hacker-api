@@ -42,20 +42,6 @@ export class UserController {
   @ApiBearerAuth()
   @ApiOperation({ description: 'Get all users' })
   @UseGuards(AuthGuard())
-  @Get(':_id')
-  findOne(@Param('_id') _id: string) {
-    try {
-      return this.userService.findOneUserById(_id);
-    } catch (error) {
-      return new ForbiddenException({
-        message: 'Failed to get user',
-      });
-    }
-  }
-
-  @ApiBearerAuth()
-  @ApiOperation({ description: 'Get all users' })
-  @UseGuards(AuthGuard())
   @Get('/all-users')
   findAll() {
     try {
@@ -63,6 +49,20 @@ export class UserController {
     } catch (error) {
       return new ForbiddenException({
         message: 'Failed to get users',
+      });
+    }
+  }
+
+  @ApiBearerAuth()
+  @ApiOperation({ description: 'Get all users' })
+  @UseGuards(AuthGuard())
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    try {
+      return this.userService.findOneUserById(_id);
+    } catch (error) {
+      return new ForbiddenException({
+        message: 'Failed to get user',
       });
     }
   }

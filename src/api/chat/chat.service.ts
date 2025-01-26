@@ -27,26 +27,20 @@ export class ChatService {
    * @returns
    */
   async findAll(userId: string) {
-    const chatsByUser = this.chatModel.find({ user: userId });
+    const chatsByUser = this.chatModel.find(
+      { user: userId },
+      { __v: 0, createdAt: 0, updatedAt: 0 }, // exclude top-level fields
+    );
 
-    if (chatsByUser) {
-      chatsByUser?.populate({
-        path: 'user',
-        model: User.name,
-      });
-    }
+    // populate the 'user' field and exclude sensitive fields
+    const chats = await chatsByUser.populate({
+      path: 'user',
+      model: User.name, // reference to the User model
+      select: '-__v -password -createdAt -updatedAt', // exclude fields from the populated user
+    });
 
-    const chats = await chatsByUser;
     return chats;
   }
-
-  // findOne(_id: string) {
-  //   return `This action returns a #${_id} chat`;
-  // }
-
-  // update(_id: string, payload: UpdateChatDto) {
-  //   return `This action updates a #${_id} chat`;
-  // }
 
   /**
    * remove single chat
