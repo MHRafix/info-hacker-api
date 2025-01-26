@@ -6,15 +6,14 @@
 - TypeScript
 - MongoDB
 - Mongoose
-- Mongoose Aggregation
 - JWT - Json Web Token
 - Passport
-- Web Socket
 
 ## Features
 
-- Magic link authentication [link expiration time: 15 mins]
+- JWT Authentication
 - User crud API
+- Chat crud API
 
 ## Instructions to run the app
 
