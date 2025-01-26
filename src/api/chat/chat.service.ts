@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from '../user/entities/user.entity';
 import { CreateChatDto } from './dto/create-chat.dto';
-import { UpdateChatDto } from './dto/update-chat.dto';
 import { Chat, ChatDocument } from './entities/chat.entity';
 
 @Injectable()
@@ -22,6 +21,11 @@ export class ChatService {
     return this.chatModel.create(payload);
   }
 
+  /**
+   * find chats by specific user
+   * @param userId Object ID of the user
+   * @returns
+   */
   async findAll(userId: string) {
     const chatsByUser = this.chatModel.find({ user: userId });
 
@@ -36,15 +40,20 @@ export class ChatService {
     return chats;
   }
 
-  findOne(_id: string) {
-    return `This action returns a #${_id} chat`;
-  }
+  // findOne(_id: string) {
+  //   return `This action returns a #${_id} chat`;
+  // }
 
-  update(_id: string, payload: UpdateChatDto) {
-    return `This action updates a #${_id} chat`;
-  }
+  // update(_id: string, payload: UpdateChatDto) {
+  //   return `This action updates a #${_id} chat`;
+  // }
 
+  /**
+   * remove single chat
+   * @param _id objectId
+   * @returns
+   */
   remove(_id: string) {
-    return `This action removes a #${_id} chat`;
+    return this.chatModel.findByIdAndRemove(_id);
   }
 }

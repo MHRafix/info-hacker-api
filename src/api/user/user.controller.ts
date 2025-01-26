@@ -4,6 +4,7 @@ import {
   ForbiddenException,
   Get,
   Post,
+  UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -17,20 +18,24 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @ApiOperation({})
+  @ApiOperation({ description: 'Registration user' })
   @Post('registration')
   async registration(@Body() payload: RegistrationDto) {
     try {
       return this.userService.registration(payload);
     } catch (error) {
-      throw new ForbiddenException('Failed to registration');
+      throw new UnauthorizedException('Failed to registration');
     }
   }
 
-  @ApiOperation({})
+  @ApiOperation({ description: 'Login user' })
   @Post('login')
   async login(@Body() payload: LoginDto) {
-    return this.userService.login(payload);
+    try {
+      return this.userService.login(payload);
+    } catch (error) {
+      return new UnauthorizedException('Failed to login');
+    }
   }
 
   @ApiBearerAuth()
@@ -38,6 +43,12 @@ export class UserController {
   @UseGuards(AuthGuard())
   @Get('/all-users')
   findAll() {
-    return this.userService.findAll();
+    try {
+      return this.userService.findAll();
+    } catch (error) {
+      return new ForbiddenException({
+        message: 'Failed to get users',
+      });
+    }
   }
 }
