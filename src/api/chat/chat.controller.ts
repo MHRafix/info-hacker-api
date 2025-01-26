@@ -44,9 +44,10 @@ export class ChatController {
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
   @Delete(':_id')
-  remove(@Param('_id') _id: string) {
+  async remove(@Param('_id') _id: string) {
     try {
-      return this.chatService.remove(_id);
+      await this.chatService.remove(_id);
+      return { isSuccess: true };
     } catch (error) {
       return new ForbiddenException({ message: error?.message });
     }
