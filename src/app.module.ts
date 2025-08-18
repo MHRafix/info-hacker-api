@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PassportModule } from '@nestjs/passport';
 import { ChatModule } from './api/chat/chat.module';
+import { ExpenseModule } from './api/expense/expense.module';
 import { ProductsModule } from './api/products/products.module';
 import { UserModule } from './api/user/user.module';
 import { AppController } from './app.controller';
@@ -29,6 +30,7 @@ import config from './app/config';
     UserModule,
     ChatModule,
     ProductsModule,
+    ExpenseModule,
   ],
 
   controllers: [AppController],
