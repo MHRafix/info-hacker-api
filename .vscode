@@ -1,0 +1,105 @@
+{
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"workbench.colorCustomizations": {
+		"editorCursor.background": "#04ff64",
+		"editorCursor.foreground": "#04ff64"
+	},
+	"files.autoSave": "onFocusChange",
+	"emmet.triggerExpansionOnTab": true,
+	"files.associations": {
+		"*html": "html"
+	},
+	"emmet.includeLanguages": {
+		"javascript": "javascriptreact"
+	},
+	// prettier config
+	"prettier.useTabs": true,
+	"prettier.singleQuote": true,
+	"prettier.endOfLine": "auto",
+	"prettier.jsxSingleQuote": true,
+	// config related to code formatting
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[javascript]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"javascript.validate.enable": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "explicit",
+		"source.sortImports": "explicit"
+	},
+	"explorer.confirmDelete": false,
+	"tabnine.experimentalAutoImports": true,
+	"emmet.showSuggestionsAsSnippets": true,
+	"editor.fontSize": 18,
+	"editor.mouseWheelZoom": true,
+	"editor.fontFamily": "'Cascadia Code'",
+	"editor.wordWrap": "on",
+	"editor.fontWeight": 500,
+	"editor.fontLigatures": true,
+	"git.enableSmartCommit": true,
+	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.renderWhitespace": "none",
+	"terminal.integrated.enableMultiLinePasteWarning": false,
+	"explorer.confirmDragAndDrop": false,
+	"workbench.preferredHighContrastColorTheme": "Learn with Sumit - Peace of the eye",
+	"workbench.preferredLightColorTheme": "Default Dark+",
+	"editor.cursorBlinking": "expand",
+	"security.workspace.trust.untrustedFiles": "open",
+	"editor.minimap.showSlider": "always",
+	"editor.minimap.renderCharacters": false,
+	"editor.semanticHighlighting.enabled": true,
+	"terminal.integrated.confirmOnKill": "never",
+	"terminal.integrated.cursorStyle": "line",
+	"terminal.integrated.defaultLocation": "editor",
+	"terminal.integrated.defaultProfile.windows": "Git Bash",
+	"terminal.integrated.environmentChangesIndicator": "on",
+	"terminal.integrated.profiles.windows": {
+		"PowerShell": {
+			"source": "PowerShell",
+			"icon": "terminal-powershell"
+		},
+		"Command Prompt": {
+			"path": [
+				"${env:windir}\\Sysnative\\cmd.exe",
+				"${env:windir}\\System32\\cmd.exe"
+			],
+			"args": [],
+			"icon": "terminal-cmd"
+		},
+		"Git Bash": {
+			"source": "Git Bash"
+		},
+		"Windows PowerShell": {
+			"path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+		}
+	},
+	"git.autofetch": true,
+	"workbench.iconTheme": "vscode-icons",
+	"typescript.inlayHints.enumMemberValues.enabled": true,
+	"editor.semanticTokenColorCustomizations": {},
+	"terminal.integrated.minimumContrastRatio": 4,
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"workbench.colorTheme": "Solarized Dark",
+	"window.menuBarVisibility": "compact",
+	"editor.codeLens": false,
+	"diffEditor.wordWrap": "on",
+	"github.copilot.enable": {
+		"*": false,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false
+	},
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"workbench.editor.enablePreview": false,
+	"editor.tabSize": 2,
+	"dart.flutterSdkPath": "C:\\flutter",
+	"dart.warnWhenEditingFilesOutsideWorkspace": false,
+	"editor.formatOnSave": true,
+	"editor.overtypeCursorStyle": "block",
+	"editor.multiCursorMergeOverlapping": true
+}
